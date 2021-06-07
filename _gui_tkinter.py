@@ -4,12 +4,13 @@ from tkinter import ttk
 from tkinter import messagebox
 
 root = Tk()
-root.geometry('400x400')
+root.geometry('400x500')
 root.title('Weather App (GUI)')
+root.config(bg="white")
 cit = StringVar()
-Label(root, text='Weather for today', font='arial', fg="blue").grid(row=1, column=3)
-Label(root, text='Enter City:', fg="green").grid(row=2, column=1)
-Entry(root, width=15, textvariable=cit, border="5px").grid(row=2, column=2)
+Label(root, text='Weather for today', font='arial', fg="Green").grid(row=1, column=2)
+Label(root, text='Enter City:', fg="black").grid(row=3, column=1)
+Entry(root, width=15, textvariable=cit, border="5px").grid(row=3, column=3)
 
 api_key = "c1ced8243a109e9b580be349c2c8b0b0"
 
@@ -43,9 +44,15 @@ def proceed():
         else: 
             return messagebox.showerror('Error', 'No City Found')
 
-
 # button for proceed
-Button(root, text='Proceed', command=proceed, bg="red", foreground="blue", border="5px").grid(row=3, column=3)
 
+
+Button(root, text='Proceed', command=proceed, bg="red", foreground="green", border="5px").grid(row=5, column=3)
+
+# image
+img = PhotoImage(file="weather.png")
+canvas = Canvas(root, width=200, height=200)
+canvas.create_image(0, 0, anchor=NW, image=img)
+canvas.place(x=110, y=250)
 
 root.mainloop()
